@@ -41,7 +41,8 @@
             android:ems="10"
             android:hint="      Valid email"
             android:inputType="textEmailAddress"
-            tools:layout_editor_absoluteX="33dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="319dp" />
 
         <EditText
@@ -52,7 +53,8 @@
             android:ems="10"
             android:hint="      Strong password"
             android:inputType="textPassword"
-            tools:layout_editor_absoluteX="33dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="460dp" />
 
         <CheckBox
@@ -73,7 +75,8 @@
             android:text="Get started"
             android:textColor="#000000"
             android:textSize="34sp"
-            tools:layout_editor_absoluteX="121dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="160dp" />
 
         <TextView
@@ -81,7 +84,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="by creating a free account"
-            tools:layout_editor_absoluteX="123dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="205dp" />
 
         <EditText
@@ -92,7 +96,8 @@
             android:ems="10"
             android:hint="      Full name"
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="33dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="249dp" />
 
         <EditText
@@ -103,7 +108,8 @@
             android:ems="10"
             android:hint="      Phone number"
             android:inputType="phone"
-            tools:layout_editor_absoluteX="33dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="391dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
