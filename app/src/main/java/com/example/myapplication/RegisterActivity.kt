@@ -17,7 +17,6 @@ class RegisterActivity : AppCompatActivity() {
 
         val textView = findViewById<TextView>(R.id.login)
         textView.setOnClickListener {
-            // Create an intent to start SecondActivity
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
@@ -34,12 +33,19 @@ class RegisterActivity : AppCompatActivity() {
             val isEmailValid = credentialsManager.isValidEmail(email)
             val isPasswordValid = credentialsManager.isValidPassword(password)
 
-            resultTextView.text = when {
-                !isEmailValid -> "Invalid email format"
-                !isPasswordValid -> "Password cannot be empty"
-                else -> "Valid credentials"
+            if (!isEmailValid) {
+                resultTextView.text = "Invalid email format"
+            } else if (!isPasswordValid) {
+                resultTextView.text = "Password cannot be empty"
+            } else {
+                val registerResult = credentialsManager.register(email, password)
+                resultTextView.text = registerResult
+                if (registerResult == "Account created successfully") {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
             }
         }
     }
 }
-

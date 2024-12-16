@@ -1,8 +1,6 @@
 package com.example.myapplication
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Test
 
 class CredentialsManagerTest {
@@ -19,6 +17,7 @@ class CredentialsManagerTest {
         assertFalse(credentialsManager.isValidEmail("invalid-email"))
         assertFalse(credentialsManager.isValidEmail("missing@domain"))
         assertFalse(credentialsManager.isValidEmail("missing.domain@"))
+        assertFalse(credentialsManager.isValidEmail("invalid@domain@.com"))
     }
 
     @Test
@@ -35,5 +34,24 @@ class CredentialsManagerTest {
     @Test
     fun testFilledPassword() {
         assertTrue(credentialsManager.isValidPassword("securePassword123"))
+    }
+
+    @Test
+    fun testRegisterNewAccount() {
+        val result = credentialsManager.register("new.user@example.com", "newPassword123")
+        assertEquals("Account created successfully", result)
+    }
+
+    @Test
+    fun testRegisterExistingAccount() {
+        credentialsManager.register("existing.user@example.com", "password123")
+        val result = credentialsManager.register("existing.user@example.com", "newPassword123")
+        assertEquals("Error: Email already taken", result)
+    }
+
+    @Test
+    fun testHardcodedCredentials() {
+        assertTrue(credentialsManager.checkCredentials("test@te.st", "1234"))
+        assertFalse(credentialsManager.checkCredentials("test@te.st", "wrongPassword"))
     }
 }
